@@ -1,0 +1,105 @@
+body {
+    text-align: center;
+    font-family: 'Oldenburg', cursive;
+    background-color: #E1454F;
+}
+
+h1 {
+    font-family: 'Ribeye Marrow', cursive;
+    color: #E1454F;
+    font-size: 52px;
+    text-shadow:
+		-1px -1px 0 #C5DCCE,
+		1px -1px 0 #C5DCCE,
+		-1px 1px 0 #C5DCCE,
+		1px 1px 0 #C5DCCE;
+}
+
+h2 {
+    font-family: 'Ribeye', cursive;
+    color: #69425A;
+    text-decoration: underline;
+}
+
+.styledrow {
+    margin-top: 10px;
+    background-color: #F6A09E;
+    padding: 15px;
+    border: 5px solid #B92D3E;
+}
+
+.card {
+    background-color: #F6A09E;
+    border: none;
+}
+
+ul, .card-block, .teststyling {
+    color: #69425A;
+    background-color: #EBEBBB;
+    border: 2px solid #C5DCCE;
+}
+
+.card-block, .teststyling {
+    padding: 10px;
+    margin: 10px;
+}
+
+.embed-responsive {
+    margin-left: 15%;
+    width: 70%;
+    margin-right: 15%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 2px solid #69425A;
+}
+
+#wrap {
+    margin-bottom: 50px;
+}
+
+#testWrap {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#newBurger {
+    min-width: 350px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+#eaten {
+    max-height: 100px;
+}
+
+#burgieheader {
+    margin-top: 15px;
+}
+
+a, a:link, a:active, a:visited {
+    text-decoration: none;
+    color: #69425A;
+}
+
+a:hover {
+    color: #E1454F;
+}
+
+.btn {
+    background-color: white;
+    font-family: 'Oldenburg', cursive;
+}
+
+.btn:hover {
+    background-color: #C5DCCE;
+    font-family: 'Oldenburg', cursive;
+}
+
+h5 {
+    text-decoration: underline;
+}
+
+h4 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

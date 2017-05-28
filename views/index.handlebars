@@ -1,0 +1,77 @@
+<!-- Begin Page Container -->
+<div class="container" id="wrap">
+
+    <!-- Burgie Header -->
+    <img src="./assets/img/burgie.png">
+
+    <!-- Begin First Row -->
+    <div class="row styledrow">
+
+        <div class="col-12">
+
+            <h1>Welcome to Burgie's AdoraBurger!</h1>
+
+            <h2>May is Pokémon Burger Month!</h2>
+
+        </div>
+
+    <!-- End First Row -->
+    </div>
+
+    <!-- Begin Second Row -->
+    <div class="row styledrow">
+
+        <div class="col-12">
+
+            <h4>The Ditto: Create your own burger!</h4>
+
+                {{!-- POST request to create a new burger --}}
+                <form class="create-update-form" action="/" method="POST">
+                        <input type="text" id="newBurger" name="burger_name">
+                        <button type="submit" class="btn btn-secondary btn-sm">Order It!</button>
+                </form>
+                
+        </div>
+
+    <!-- End Second Row -->
+    </div>
+
+    <!-- Begin Third Row -->
+    <div class="row styledrow">
+
+        {{!-- This column shows all burgers with the status of devoured = false --}}
+        <div class="col-6 card">
+            <h5>Try One of These!</h5>
+                {{#each burgers}}
+                    {{#unless this.devoured}}
+                    <div class="card-block">
+                        <p class="card-title text-center"> {{this.burger_name}} </p>
+
+                        {{!-- PUT request to change the 'devoured' status of a burger from false to true --}}
+                        <form action="/{{this.id}}?_method=PUT" method="POST" class="card-subtitle">
+                            <input type="hidden" name="devoured" value="1">
+                            <button type="submit" class="btn btn-secondary btn-sm">I'll Take This One!</button>
+                        </form>  
+
+                    </div>
+                    {{/unless}}
+                {{/each}}
+        </div>
+
+        {{!-- This column shows all burgers with the status devoured = true --}}
+        <div class="col-6 card">
+            <h5>Consumed, But Not Forgotten</h5>
+                {{#each burgers}}
+                    {{#if this.devoured}}
+                    <div class="card-block" id="eaten">
+                        <p class="card-title text-center"> {{this.burger_name}} </p>
+                    </div>
+                    {{/if}}
+                {{/each}}
+        </div>
+
+    <!-- End Third Row -->
+    </div>
+
+<!-- End Page Container -->
+</div>
