@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var expresshandlebars = require("express-handlebars");
 var path = require("path");
+var db = require("./models");
 // =============================================================
 
 // Set up the Express app
@@ -33,6 +34,8 @@ app.use("/", routes);
 
 // =============================================================
 // Starts the server listening
-app.listen(PORT, function() {
-  console.log("Burgies are being devoured on PORT " + PORT + "!");
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("Sequelized burgies are being devoured on PORT " + PORT + "!");
+  });
 });
