@@ -3,43 +3,39 @@ var express = require("express");
 var router = express.Router();
 
 // Import the burger model
-var burger = require("../models/burger.js");
+var db = require("../models/");
 // =============================================================
 
-// GET request
-router.get("/", function(request, response) {
-    burger.selectAll(function(data) {
-        var handlebarsObject = {
-            burgers: data
-        };
-        console.log(handlebarsObject);
-        response.render("index", handlebarsObject);
+module.exports = function(app) {
+
+    // GET request
+    app.get("/", function(request, response) {
+        db.Burger.findAll({}).then(function(results) {
+            response.json(results);
         });
-});
-
-// POST request
-router.post("/", function(request, response) {
-    burger.insertOne("burger_name", request.body.burger_name,
-        function(data) {
-            var handlebarsObject = {
-                burgers: data
-            };
-        console.log(handlebarsObject);
-        response.redirect("/");
     });
-});
 
-// PUT request
-router.put("/:id", function(request, response) {
-    burger.updateOne("devoured", request.body.devoured, "id", request.params.id, function(data) {
-            var handlebarsObject = {
-                burgers: data
-            };
-        console.log(handlebarsObject);
-        response.redirect("/");
+    // POST request
+    app.post("/", function(request, response) {
+        db.Burger.create({
+            burger_name: request.body.burger_name
+        }).then(function(results) {
+            console.log("Success! " + request.body.burger_name + " was added!");
+            response.end();
+        });
     });
-});
 
-// =============================================================
-// Export routes for server.js to use.
-module.exports = router;
+    // PUT request
+    app.put(":/id", function(request, response) {
+        db.Burger.update({
+            devoured: request.body.devoured
+        }, {
+            where: {
+                id: request.body.id
+            }
+        }).then(function(results) {
+            response.json(results);
+        });
+    });
+
+};
