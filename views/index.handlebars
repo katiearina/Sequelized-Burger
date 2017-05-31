@@ -42,7 +42,7 @@
         {{!-- This column shows all burgers with the status of devoured = false --}}
         <div class="col-6 card">
             <h5>Try One of These!</h5>
-                {{#each burgers}}
+                {{#each Burgers}}
                     {{#unless this.devoured}}
                     <div class="card-block">
                         <p class="card-title text-center"> {{this.burger_name}} </p>
@@ -61,7 +61,7 @@
         {{!-- This column shows all burgers with the status devoured = true --}}
         <div class="col-6 card">
             <h5>Consumed, But Not Forgotten</h5>
-                {{#each burgers}}
+                {{#each Burgers}}
                     {{#if this.devoured}}
                     <div class="card-block" id="eaten">
                         <p class="card-title text-center"> {{this.burger_name}} </p>

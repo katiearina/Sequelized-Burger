@@ -8,30 +8,34 @@ module.exports = function(app) {
     // GET request
     app.get("/", function(request, response) {
         db.Burger.findAll({}).then(function(results) {
-        response.render("index", results);
+            var handlebarsObject = {
+                Burgers: results
+            };
+            console.log(handlebarsObject);
+        response.render("index", handlebarsObject);
         });
     });
 
     // POST request
-    app.post("/api/burgers", function(request, response) {
+    app.post("/", function(request, response) {
         db.Burger.create({
             burger_name: request.body.burger_name
         }).then(function(results) {
             console.log("Success! " + request.body.burger_name + " was added!");
-            response.end();
+            response.redirect("/");
         });
     });
 
     // PUT request
-    app.put("api/burgers/:id", function(request, response) {
+    app.put("/:id", function(request, response) {
         db.Burger.update({
             devoured: request.body.devoured
         }, {
             where: {
-                id: request.body.id
+                id: request.params.id
             }
         }).then(function(results) {
-            response.json(results);
+            response.redirect("/");
         });
     });
 
