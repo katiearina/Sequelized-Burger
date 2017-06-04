@@ -4,7 +4,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             notNull: true,
             allowNull: false,
-            notEmpty: true
+            validate: {
+                len: [1],
+                notEmpty: true
+            }
         },
         devoured: {
             type: DataTypes.BOOLEAN,
